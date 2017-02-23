@@ -51,4 +51,8 @@ public class Store {
 	public void addRental(Rental rental) {
 		Rentals.add(rental);
 	}
+	
+	private void setRentals(ArrayList<Rental> rentals) {
+		Rentals = rentals;
+	}
 }
