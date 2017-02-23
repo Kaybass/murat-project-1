@@ -2,6 +2,7 @@ package muratproject1.simulation;
 
 import java.util.ArrayList;
 
+import muratproject1.people.Store;
 import muratproject1.products.Movie;
 import muratproject1.products.types.Comedy;
 import muratproject1.products.types.Drama;
@@ -42,7 +43,7 @@ public class Simulator {
 		// Add 4 Romance Movies
 		
 		// initialize store
-		Store store = new Store();
+		Store store = new Store(movies);
 		
 		
 		
