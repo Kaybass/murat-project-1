@@ -7,6 +7,6 @@ public class Horror extends Type {
 	}
 	
 	public double getMultiplier(){
-		return 0.0;
+		return 4.0;
 	}
 }

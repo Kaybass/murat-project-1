@@ -8,18 +8,18 @@ public abstract class Behavior {
 		
 	}
 	
-	public abstract int getMin();
-	public abstract int getMax();
+	public abstract int getMinDays();
+	public abstract int getMaxDays();
 	
-	public int moviesToRent(int maxMovies){
-		if(getMax() < maxMovies){
-			return new Random().nextInt(getMax() - getMin() + 1) + getMax();
-		}
-		else if(getMin() > maxMovies){
-			return new Random().nextInt(maxMovies - getMin() + 1) + maxMovies;
+	public abstract int moviesToRent(int maxMovies);
+	
+	public int daysToRent(){
+		
+		if(getMinDays() == getMaxDays()){
+			return getMaxDays();
 		}
 		else{
-			return 0;
+			return new Random().nextInt(getMaxDays() - getMinDays() + 1) + getMaxDays();
 		}
 	}
 }

@@ -7,6 +7,6 @@ public class NewRelease extends Type {
 	}
 	
 	public double getMultiplier(){
-		return 0.0;
+		return 7.0;
 	}
 }

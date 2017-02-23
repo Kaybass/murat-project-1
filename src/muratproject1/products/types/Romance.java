@@ -7,6 +7,6 @@ public class Romance extends Type {
 	}
 	
 	public double getMultiplier(){
-		return 0.0;
+		return 2.5;
 	}
 }
