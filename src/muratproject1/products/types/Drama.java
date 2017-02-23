@@ -1,5 +1,12 @@
 package muratproject1.products.types;
 
-public class Drama {
-
+public class Drama extends Type {
+	
+	public Drama(){
+		
+	}
+	
+	public double getMultiplier(){
+		return 0.0;
+	}
 }
