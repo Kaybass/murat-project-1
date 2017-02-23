@@ -67,15 +67,15 @@ public class Simulator {
 			//do sim
 			
 			// Check for Rental returns first thing each day
-			for(int j=0; j < store.numMovies(); j++) {
+			for(int j=0; j < store.numRentals(); j++) {
 				if(store.getRental(j).dayPassedHowManyAreLeft() == 0) {
 					rentalReturnEvents.add(new RentalReturnEvent(
 							store.getRental(j).rentedMovie.getName(), 
 							store.getRental(j).getDaysRented(),
 							(store.getRental(j).rentedMovie.getMoneyDue(store.getRental(j).getDaysRented()))));
+					store.returnRental(j);
 				}
 			}
-			
 			
 			// Customers come in
 			
