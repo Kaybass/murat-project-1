@@ -1,5 +1,14 @@
 package muratproject1.people;
 
-public class Store {
+import java.util.ArrayList;
 
+import muratproject1.products.Movie;
+
+public class Store {
+	
+	private ArrayList<Movie> Movies;
+	
+	public Store(ArrayList<Movie> movies){
+		
+	}
 }
