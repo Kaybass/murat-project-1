@@ -1,21 +1,19 @@
 package muratproject1.simulation;
 
-import java.util.ArrayList;
-
 public class RentalReturnEvent {
 	
-	private ArrayList<String> moviesRented;
+	private String movieRented;
 	private int daysRented;
 	private double moneyMade;
 	
-	public RentalReturnEvent(ArrayList<String> moviesRented,int daysRented,double moneyMade){
-		this.moviesRented = moviesRented;
+	public RentalReturnEvent(String movieRented,int daysRented,double moneyMade){
+		this.movieRented = movieRented;
 		this.daysRented = daysRented;
 		this.moneyMade = moneyMade;
 	}
 	
-	public ArrayList<String> getMoviesRented(){
-		return moviesRented;
+	public String getMovieRented(){
+		return movieRented;
 	}
 	
 	public int getDaysRented(){

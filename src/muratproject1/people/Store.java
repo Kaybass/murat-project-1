@@ -44,8 +44,8 @@ public class Store {
 		Movies = movies;
 	}
 
-	public ArrayList<Rental> getRentals() {
-		return Rentals;
+	public Rental getRental(int index) {
+		return Rentals.get(index);
 	}
 
 	public void addRental(Rental rental) {

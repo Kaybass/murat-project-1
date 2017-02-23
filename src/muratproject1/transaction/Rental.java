@@ -1,5 +1,7 @@
 package muratproject1.transaction;
 
+import muratproject1.products.Movie;
+
 /**
  * Each time a customer comes into the store, a Rental is created that will
  * keep track of what videos they rented and how many nights they will keep
@@ -13,5 +15,30 @@ package muratproject1.transaction;
  *
  */
 public class Rental {
+	
+	public Movie rentedMovie;
+	
+	int daysLeft;
+	
+	int daysRented;
+	
+	public Rental(Movie movie, int daysToRent) {
+		
+		rentedMovie = movie;
+		
+		daysLeft = daysRented = daysToRent;
+	}
+	
+	public int dayPassedHowManyAreLeft() {
+		
+		daysLeft--;
+		
+		return daysLeft;
+	}
+	
+	public int getDaysRented() {
+		
+		return daysRented;
+	}
 
 }
