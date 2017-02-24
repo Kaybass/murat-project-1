@@ -1,5 +1,7 @@
 package muratproject1.transaction;
 
+import java.util.ArrayList;
+
 import muratproject1.people.Customer;
 import muratproject1.products.Movie;
 
@@ -17,19 +19,19 @@ import muratproject1.products.Movie;
  */
 public class Rental {
 	
-	public Movie rentedMovie;
+	private ArrayList<Movie> Movies;
 	
-	int daysLeft;
+	private int daysLeft;
 	
-	int daysRented;
+	private int daysRented;
 	
-	public Customer customer;
+	private Customer customer;
 	
-	public Rental(Customer rentingCustomer, Movie movie, int daysToRent) {
+	public Rental(Customer rentingCustomer, ArrayList<Movie> movie, int daysToRent) {
 		
 		customer = rentingCustomer;
 		
-		rentedMovie = movie;
+		Movies = movie;
 		
 		daysLeft = daysRented = daysToRent;
 	}
@@ -45,5 +47,15 @@ public class Rental {
 		
 		return daysRented;
 	}
-
+	
+	public ArrayList<Movie> getMovies(){
+		return Movies;
+	}
+	
+	@Override
+	public String toString(){
+		String result = "";
+		
+		
+	}
 }

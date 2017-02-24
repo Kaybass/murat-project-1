@@ -105,9 +105,9 @@ public class Simulator {
 			if(store.numMovies() > 0) {
 				
 				// On each day, a random number of customers visit the store
-				for(int k = 0; k < rand.nextInt(11); k++) {
+				for(int k = 0; k < rand.nextInt(10); k++) {
 					
-					int customerIndex = rand.nextInt(11);
+					int customerIndex = rand.nextInt(10);
 					
 					if(store.getCustomer(customerIndex).numActiveRentals() < 3) {	
 							
