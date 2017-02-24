@@ -2,37 +2,37 @@ package muratproject1.people;
 
 import java.util.ArrayList;
 
+import muratproject1.people.behavior.Breezy;
+import muratproject1.people.behavior.Hoarder;
+import muratproject1.people.behavior.Regular;
 import muratproject1.products.Movie;
 import muratproject1.transaction.Rental;
 
 public class Store {
 	
+	// Initialize Inventory
 	private ArrayList<Movie> Movies;
 	
+	// Initialize a Rental list
 	private ArrayList<Rental> Rentals;
+
+	// Initialize Customer List
+	ArrayList<Customer> Customers = new ArrayList<>();
 	
-	public Store(ArrayList<Movie> movies){
+	// Public Constructor
+	public Store(ArrayList<Movie> movies, ArrayList<Customer> customers){
 		
 		setMovies(movies);
+
+		setCustomers(customers);
 		
 		// Initialize Rentals to a new ArrayList
-		setRentals(new ArrayList<>());
+		Rentals = new ArrayList<>();
 	}
 	
 	public int numMovies() {
 		
 		return Movies.size();
-	}
-	
-	public Movie getMovie(String movieName) {
-		
-		for(int i = 0; i < Movies.size(); i++) {
-			if(Movies.get(i).getName() == movieName) {
-				return Movies.get(i);
-			}
-		}
-		
-		return null;
 	}
 	
 	public Movie getMovie(int index) {
@@ -44,6 +44,10 @@ public class Store {
 		Movies = movies;
 	}
 	
+	private void setCustomers(ArrayList<Customer> customers) {
+		Customers = customers;
+	}
+	
 	public int numRentals() {
 		
 		return Rentals.size();
@@ -53,35 +57,34 @@ public class Store {
 		return Rentals.get(index);
 	}
 	
-	public Rental getRental(String movieName) {
+	/**
+	 * When a Movie is rented, it must be
+	 * 		- Added to Rentals
+	 * 		- Removed from Movies
+	 * 
+	 */
+	public void rentMovie(Customer customer, int movieIndex, int daysToRent) {
 		
-		for(int i = 0; i < Rentals.size(); i++) {
-			if(Rentals.get(i).rentedMovie.getName() == movieName) {
-				return Rentals.get(i);
-			}
-		}
-		
-		return null;
-			
-	}
-
-	public void returnRental(int index) {
-		
-		Movies.add(Rentals.get(index).rentedMovie);
-		
-		Rentals.remove(index);
-	}
-
-	public void rentMovie(int movieIndex, int daysToRent) {
-		
-		Rental rental = new Rental(Movies.get(movieIndex), daysToRent);
+		Rental rental = new Rental(customer, Movies.get(movieIndex), daysToRent);
 		
 		Rentals.add(rental);
+		
+		customer.rentMovie();
 		
 		Movies.remove(movieIndex);
 	}
 	
-	private void setRentals(ArrayList<Rental> rentals) {
-		Rentals = rentals;
+	/**
+	 * When a Movie is returned, it must be
+	 * 		- Removed from Rentals
+	 * 		- Added to Movies
+	 */
+	public void returnRental(int index) {
+		
+		Movies.add(Rentals.get(index).rentedMovie);
+		
+		Rentals.get(index).customer.returnMovie();
+		
+		Rentals.remove(index);
 	}
 }

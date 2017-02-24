@@ -1,20 +1,53 @@
 package muratproject1.people;
 
 import muratproject1.people.behavior.Behavior;
-import muratproject1.transaction.Rental;
 
 public class Customer {
 	
-	private Rental activeRental;
+	private int activeRentals;
 	private String Name;
 	private Behavior customerBehavior;
-	private boolean isRenting;
 	
-	public Customer(Rental rental, String name, Behavior behavior){
-		activeRental = rental;
+	public Customer(String name, Behavior behavior){
+		
+		activeRentals = 0;
 		Name = name;
 		customerBehavior = behavior;
-		isRenting = false;
+	}
+	
+	public void rentMovie() {
+		
+		activeRentals++;
+	}
+	
+	public void returnMovie() {
+		
+		activeRentals--;
+	}
+
+	public String getName() {
+		
+		return Name;
+	}
+
+	public Behavior getBehavior() {
+		
+		return customerBehavior;
+	}
+	
+	public int numActiveRentals() {
+		
+		return activeRentals;
+	}
+	
+	public boolean isRenting() {
+		
+		if(activeRentals > 0)
+		{
+			return true;
+		}
+		
+		return false;
 	}
 
 }

@@ -1,5 +1,6 @@
 package muratproject1.transaction;
 
+import muratproject1.people.Customer;
 import muratproject1.products.Movie;
 
 /**
@@ -22,7 +23,11 @@ public class Rental {
 	
 	int daysRented;
 	
-	public Rental(Movie movie, int daysToRent) {
+	public Customer customer;
+	
+	public Rental(Customer rentingCustomer, Movie movie, int daysToRent) {
+		
+		customer = rentingCustomer;
 		
 		rentedMovie = movie;
 		

@@ -2,6 +2,7 @@ package muratproject1.simulation;
 
 import java.util.ArrayList;
 
+import muratproject1.people.Customer;
 import muratproject1.people.Store;
 import muratproject1.products.Movie;
 import muratproject1.products.types.Comedy;
@@ -9,6 +10,9 @@ import muratproject1.products.types.Drama;
 import muratproject1.products.types.Horror;
 import muratproject1.products.types.NewRelease;
 import muratproject1.products.types.Romance;
+import muratproject1.people.behavior.Breezy;
+import muratproject1.people.behavior.Hoarder;
+import muratproject1.people.behavior.Regular;
 
 public class Simulator {
 	
@@ -57,8 +61,23 @@ public class Simulator {
 		movies.add(new Movie("Forest Gump", new Romance()));
 		movies.add(new Movie("Eternal Sunshine of the Spotless Mind", new Romance()));
 		
+		// Initialize a Customers List for this Store.
+		ArrayList<Customer> customers = new ArrayList<>();
+		
+		// This store has 10 customers, add them to the list.
+		customers.add(new Customer("Alex", new Regular()));
+		customers.add(new Customer("Ben", new Regular()));
+		customers.add(new Customer("David", new Regular()));
+		customers.add(new Customer("Matt Dean", new Hoarder()));
+		customers.add(new Customer("Steve-O", new Hoarder()));
+		customers.add(new Customer("Jack", new Hoarder()));
+		customers.add(new Customer("Hanah", new Breezy()));
+		customers.add(new Customer("Joey", new Breezy()));
+		customers.add(new Customer("John", new Breezy()));
+		customers.add(new Customer("Jamie", new Breezy()));
+
 		// initialize store
-		Store store = new Store(movies);
+		Store store = new Store(movies, customers);
 		
 		
 		// Run
@@ -74,10 +93,12 @@ public class Simulator {
 							store.getRental(j).getDaysRented(),
 							(store.getRental(j).rentedMovie.getMoneyDue(store.getRental(j).getDaysRented()))));
 					store.returnRental(j);
+					
 				}
 			}
 			
 			// Customers come in
+			
 			
 		}
 		
