@@ -7,7 +7,4 @@ public abstract class Type {
 	public double calculatePrice(int daysRented){
 		return daysRented * getMultiplier();
 	}
-	
-	@Override
-	public abstract String toString();
 }

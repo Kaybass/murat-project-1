@@ -25,7 +25,8 @@ public class Movie {
 		movieType = type;
 	}
 	
-	public String getType() {
-		return movieType.toString();
+	@Override
+	public String toString(){
+		return Name + " (" + movieType.toString() + ")";
 	}
 }

@@ -12,6 +12,10 @@ public class RentalReturnEvent {
 		this.moneyMade = moneyMade;
 	}
 	
+	public double getMoney(){
+		return moneyMade;
+	}
+	
 	@Override
 	public String toString(){
 		String result = "\n";

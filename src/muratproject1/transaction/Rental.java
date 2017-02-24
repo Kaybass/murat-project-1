@@ -56,6 +56,13 @@ public class Rental {
 	public String toString(){
 		String result = "";
 		
+		result += "Customer: " + customer.getName();
 		
+		result += "Movies Rented: ";
+		for(Movie each : Movies){
+			result += "\n" + each.toString();
+		}
+		
+		return result;
 	}
 }

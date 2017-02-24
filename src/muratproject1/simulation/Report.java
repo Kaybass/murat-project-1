@@ -33,5 +33,24 @@ public class Report {
 	@Override
 	public String toString(){
 		String result = "";
+		double dosh = 0;
+		
+		result += "Completed Rentals for this period\n";
+		for(RentalReturnEvent each : returnEvents){
+			dosh += each.getMoney();
+			
+			result += each.toString();
+		}
+		result += "\n\nCurrent Open rentals at end of period:\n";
+		for(Rental each : FinalOpenRentals){
+			result += each.toString();
+		}
+		result += "\n\nMovies in inventory at end of period\n";
+		for(Movie each : FinalAvailableInventory){
+			result += each.toString();
+		}
+		result += "\n\nRental earnings for current period:" + Double.toString(dosh);
+		
+		return result;
 	}
 }
