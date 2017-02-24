@@ -19,12 +19,17 @@ public class Breezy extends Behavior{
 	}
 	
 	public int moviesToRent(int maxMovies){
-		int moviesRentalSize = new Random().nextInt(maxMovies + 1);
+		int moviesRentalSize = new Random().nextInt(2 + 1);
 		if(maxMovies >= moviesRentalSize){
 			return moviesRentalSize;
 		}
 		else{
 			return 0;
 		}
+	}
+	
+	@Override
+	public String toString() {
+		return "Breezy";
 	}
 }

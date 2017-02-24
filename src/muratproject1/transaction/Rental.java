@@ -63,6 +63,7 @@ public class Rental {
 		result += "Customer: " + customer.getName();
 		
 		result += "Movies Rented: ";
+		
 		for(Movie each : Movies){
 			result += "\n" + each.toString();
 		}

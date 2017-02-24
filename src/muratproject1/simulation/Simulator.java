@@ -102,7 +102,8 @@ public class Simulator {
 					}
 					
 					rentalReturnEvents.add(new RentalReturnEvent(
-							movieNames, 
+							movieNames,
+							store.getRental(j).getCustomer(),
 							store.getRental(j).getDaysRented(),
 							moneyEarned));
 					

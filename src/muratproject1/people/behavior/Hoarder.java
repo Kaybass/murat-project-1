@@ -23,4 +23,9 @@ public class Hoarder extends Behavior{
 			return 0;
 		}
 	}
+	
+	@Override
+	public String toString() {
+		return "Hoarder";
+	}
 }

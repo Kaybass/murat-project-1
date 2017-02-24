@@ -54,4 +54,9 @@ public class Customer {
 		activeRentals -= numMovies;
 	}
 
+	@Override
+	public String toString() {
+		return "Customer Name: " + getName() + 
+				"\n\tCustomer Type: " + customerBehavior.toString() + "\n";
+	}
 }
