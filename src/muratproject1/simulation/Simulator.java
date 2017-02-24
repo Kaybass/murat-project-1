@@ -1,6 +1,7 @@
 package muratproject1.simulation;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import muratproject1.people.Customer;
 import muratproject1.people.Store;
@@ -22,8 +23,8 @@ public class Simulator {
 	
 	public Report runSimulation(int days){
 		
-		//initialize report
-		Report report = new Report();
+		// Declare report
+		Report report;
 		
 		// initialize a list of RentalReturnEvents that will track each return to be used when generating the Report.
 		ArrayList<RentalReturnEvent> rentalReturnEvents = new ArrayList<RentalReturnEvent>();
@@ -79,6 +80,9 @@ public class Simulator {
 		// initialize store
 		Store store = new Store(movies, customers);
 		
+		// Initialize Random.
+		Random rand = new Random();
+		
 		
 		// Run
 		for(int i = 0; i < days; i++){
@@ -97,11 +101,25 @@ public class Simulator {
 				}
 			}
 			
-			// Customers come in
-			
-			
+			// If there are movies available, customers come in
+			if(store.numMovies() > 0) {
+				
+				// On each day, a random number of customers visit the store
+				for(int k = 0; k < rand.nextInt(11); k++) {
+					
+					int customerIndex = rand.nextInt(11);
+					
+					if(store.getCustomer(customerIndex).numActiveRentals() < 3) {	
+							
+						store.rentMovie(customerIndex, 
+							0, 
+							store.getCustomer(customerIndex).getDaysToRent());
+					}
+				}
+			}
 		}
 		
+		report = new Report(rentalReturnEvents, store.getRentals(), store.getMovies());
 		
 		return report;
 	}

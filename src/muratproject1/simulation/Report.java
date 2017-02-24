@@ -11,13 +11,10 @@ public class Report {
 	private ArrayList<Rental> FinalOpenRentals;
 	private ArrayList<Movie> FinalAvailableInventory;
 	
-	public Report(){
-		
-	}
-	
-	public void addRentalReturnEvent(Rental rental){
-		
-		
+	public Report(ArrayList<RentalReturnEvent> rentalReturnEvents, ArrayList<Rental> finalRentals, ArrayList<Movie> finalMovies){
+		returnEvents = rentalReturnEvents;
+		setFinalOpenRentals(finalRentals);
+		setFinalAvailableInventory(finalMovies);
 	}
 	
 	public void setFinalOpenRentals(ArrayList<Rental> rentals){

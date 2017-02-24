@@ -29,11 +29,6 @@ public class Customer {
 		
 		return Name;
 	}
-
-	public Behavior getBehavior() {
-		
-		return customerBehavior;
-	}
 	
 	public int numActiveRentals() {
 		
@@ -48,6 +43,10 @@ public class Customer {
 		}
 		
 		return false;
+	}
+	
+	public int getDaysToRent() {
+		return customerBehavior.daysToRent();
 	}
 
 }

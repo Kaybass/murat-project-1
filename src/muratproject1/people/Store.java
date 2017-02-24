@@ -2,9 +2,6 @@ package muratproject1.people;
 
 import java.util.ArrayList;
 
-import muratproject1.people.behavior.Breezy;
-import muratproject1.people.behavior.Hoarder;
-import muratproject1.people.behavior.Regular;
 import muratproject1.products.Movie;
 import muratproject1.transaction.Rental;
 
@@ -39,6 +36,10 @@ public class Store {
 		
 		return Movies.get(index);
 	}
+	
+	public ArrayList<Movie> getMovies() {
+		return Movies;
+	}
 
 	private void setMovies(ArrayList<Movie> movies) {
 		Movies = movies;
@@ -48,9 +49,17 @@ public class Store {
 		Customers = customers;
 	}
 	
+	public Customer getCustomer(int index) {
+		return Customers.get(index);
+	}
+	
 	public int numRentals() {
 		
 		return Rentals.size();
+	}
+	
+	public ArrayList<Rental> getRentals() {
+		return Rentals;
 	}
 
 	public Rental getRental(int index) {
@@ -63,13 +72,16 @@ public class Store {
 	 * 		- Removed from Movies
 	 * 
 	 */
-	public void rentMovie(Customer customer, int movieIndex, int daysToRent) {
+	public void rentMovie(int customerIndex, int movieIndex, int daysToRent) {
 		
-		Rental rental = new Rental(customer, Movies.get(movieIndex), daysToRent);
+		Rental rental = new Rental(
+				Customers.get(customerIndex), 
+				Movies.get(movieIndex), 
+				daysToRent);
 		
 		Rentals.add(rental);
 		
-		customer.rentMovie();
+		Customers.get(customerIndex).rentMovie();
 		
 		Movies.remove(movieIndex);
 	}
