@@ -17,7 +17,7 @@ public class Store {
 	ArrayList<Customer> Customers = new ArrayList<>();
 	
 	// Public Constructor
-	public Store(ArrayList<Movie> movies, ArrayList<Customer> customers){
+	public Store(ArrayList<Movie> movies, ArrayList<Customer> customers) {
 		
 		setMovies(movies);
 
@@ -72,18 +72,26 @@ public class Store {
 	 * 		- Removed from Movies
 	 * 
 	 */
-	public void rentMovie(int customerIndex, int movieIndex, int daysToRent) {
+	public void newRental(Customer customer, ArrayList<Movie> movies, int daysToRent) {
 		
-		Rental rental = new Rental(
-				Customers.get(customerIndex), 
-				Movies.get(movieIndex), 
-				daysToRent);
+		// Create a new Rental
+		Rental rental = new Rental(customer, movies, daysToRent);
 		
+		// Add the new Rental to Rentals
 		Rentals.add(rental);
 		
-		Customers.get(customerIndex).rentMovie();
+		// Update the renting customer
+		for(Customer match : Customers) {
+			
+			if (match == customer) {
+				customer.newRental(movies.size());
+			}
+		}
 		
-		Movies.remove(movieIndex);
+		// Remove the rented movies from the inventory list.
+		for(Movie movie : movies) {
+			Movies.remove(movie);
+		}
 	}
 	
 	/**
@@ -91,12 +99,17 @@ public class Store {
 	 * 		- Removed from Rentals
 	 * 		- Added to Movies
 	 */
-	public void returnRental(int index) {
+	public void returnRental(int rentalIndex) {
 		
-		Movies.add(Rentals.get(index).rentedMovie);
+		// Update the renting customer
+		Rentals.get(rentalIndex).getCustomer().returnRental(Rentals.get(rentalIndex).getMovies().size());
 		
-		Rentals.get(index).customer.returnMovie();
+		// Add the returned videos to Movies
+		for(Movie movie : Rentals.get(rentalIndex).getMovies()) {
+			Movies.add(movie);
+		}
 		
-		Rentals.remove(index);
+		// Remove the Rental from Rentals
+		Rentals.remove(rentalIndex);
 	}
 }

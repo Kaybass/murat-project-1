@@ -92,10 +92,20 @@ public class Simulator {
 			// Check for Rental returns first thing each day
 			for(int j=0; j < store.numRentals(); j++) {
 				if(store.getRental(j).dayPassedHowManyAreLeft() == 0) {
+					
+					double moneyEarned = 0;
+					ArrayList<String> movieNames = new ArrayList<>();
+					
+					for(Movie movie: store.getRental(j).getMovies() ) {
+						moneyEarned += movie.getMoneyDue(store.getRental(j).getDaysRented());
+						movieNames.add(movie.getName());
+					}
+					
 					rentalReturnEvents.add(new RentalReturnEvent(
-							store.getRental(j).rentedMovie.getName(), 
+							movieNames, 
 							store.getRental(j).getDaysRented(),
-							(store.getRental(j).rentedMovie.getMoneyDue(store.getRental(j).getDaysRented()))));
+							moneyEarned));
+					
 					store.returnRental(j);
 					
 				}
@@ -111,9 +121,7 @@ public class Simulator {
 					
 					if(store.getCustomer(customerIndex).numActiveRentals() < 3) {	
 							
-						store.rentMovie(customerIndex, 
-							0, 
-							store.getCustomer(customerIndex).getDaysToRent());
+						
 					}
 				}
 			}

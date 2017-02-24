@@ -43,6 +43,10 @@ public class Rental {
 		return daysLeft;
 	}
 	
+	public Customer getCustomer() {
+		return customer;
+	}
+	
 	public int getDaysRented() {
 		
 		return daysRented;

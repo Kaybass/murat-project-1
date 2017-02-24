@@ -1,12 +1,14 @@
 package muratproject1.simulation;
 
+import java.util.ArrayList;
+
 public class RentalReturnEvent {
 	
-	private String moviesRented;
+	private ArrayList<String> moviesRented;
 	private int daysRented;
 	private double moneyMade;
 	
-	public RentalReturnEvent(String moviesRented,int daysRented,double moneyMade){
+	public RentalReturnEvent(ArrayList<String> moviesRented,int daysRented,double moneyMade){
 		this.moviesRented = moviesRented;
 		this.daysRented = daysRented;
 		this.moneyMade = moneyMade;
@@ -20,7 +22,10 @@ public class RentalReturnEvent {
 	public String toString(){
 		String result = "\n";
 		
-		result += "Movies Rented:   " + moviesRented + "\n";
+		for (String movieName : moviesRented) {
+			result += "Movies Rented:   " + movieName + "\n";
+		}
+		
 		result += "Days for Rental: " + Integer.toString(daysRented) + "\n";
 		result += "Money Made:      " + Double.toString(moneyMade) + "\n";
 

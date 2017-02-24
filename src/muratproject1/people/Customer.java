@@ -15,14 +15,14 @@ public class Customer {
 		customerBehavior = behavior;
 	}
 	
-	public void rentMovie() {
+	public void newRental(int numMovies) {
 		
-		activeRentals++;
+		activeRentals += numMovies;
 	}
 	
-	public void returnMovie() {
+	public void returnRental(int numMovies) {
 		
-		activeRentals--;
+		activeRentals -= numMovies;
 	}
 
 	public String getName() {
