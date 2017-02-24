@@ -27,6 +27,6 @@ public class Movie {
 	
 	@Override
 	public String toString(){
-		return Name + " (" + movieType.toString() + ")";
+		return "\t- " + Name + " (" + movieType.toString() + ")\n";
 	}
 }

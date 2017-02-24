@@ -117,11 +117,12 @@ public class Simulator {
 				// On each day, a random number of customers visit the store
 				for(int k = 0; k < rand.nextInt(10); k++) {
 					
-					int customerIndex = rand.nextInt(10);
+					int customer = rand.nextInt(10);
+
+					int numMoviesToRent = store.getCustomer(customer).moviesToRent(store.getMovies().size());
 					
-					if(store.getCustomer(customerIndex).numActiveRentals() < 3) {	
-							
-						
+					if(store.getCustomer(customer).numActiveRentals() < 3 && numMoviesToRent != 0) {
+						store.newRental(customer, numMoviesToRent);
 					}
 				}
 			}

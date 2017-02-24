@@ -15,14 +15,9 @@ public class Customer {
 		customerBehavior = behavior;
 	}
 	
-	public void newRental(int numMovies) {
+	public int numActiveRentals() {
 		
-		activeRentals += numMovies;
-	}
-	
-	public void returnRental(int numMovies) {
-		
-		activeRentals -= numMovies;
+		return activeRentals;
 	}
 
 	public String getName() {
@@ -30,9 +25,8 @@ public class Customer {
 		return Name;
 	}
 	
-	public int numActiveRentals() {
-		
-		return activeRentals;
+	public int getDaysToRent() {
+		return customerBehavior.daysToRent();
 	}
 	
 	public boolean isRenting() {
@@ -45,8 +39,19 @@ public class Customer {
 		return false;
 	}
 	
-	public int getDaysToRent() {
-		return customerBehavior.daysToRent();
+	public int moviesToRent(int moviesAvailable) {
+		
+		return customerBehavior.moviesToRent(moviesAvailable);
+	}
+	
+	public void newRental(int numMovies) {
+		
+		activeRentals += numMovies;
+	}
+	
+	public void returnRental(int numMovies) {
+		
+		activeRentals -= numMovies;
 	}
 
 }

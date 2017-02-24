@@ -5,6 +5,8 @@ import java.util.Random;
 //Cheesy Breezy make it Fast and Easy
 public class Breezy extends Behavior{
 	
+	
+	
 	public Breezy(){
 		
 	}
@@ -17,6 +19,12 @@ public class Breezy extends Behavior{
 	}
 	
 	public int moviesToRent(int maxMovies){
-		return new Random().nextInt(2) + 1;
+		int moviesRentalSize = new Random().nextInt(maxMovies + 1);
+		if(maxMovies >= moviesRentalSize){
+			return moviesRentalSize;
+		}
+		else{
+			return 0;
+		}
 	}
 }

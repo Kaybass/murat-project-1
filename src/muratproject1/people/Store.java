@@ -1,6 +1,7 @@
 package muratproject1.people;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import muratproject1.products.Movie;
 import muratproject1.transaction.Rental;
@@ -72,25 +73,35 @@ public class Store {
 	 * 		- Removed from Movies
 	 * 
 	 */
-	public void newRental(Customer customer, ArrayList<Movie> movies, int daysToRent) {
+	public void newRental(int customerIndex, int numMoviesToRent) {
 		
+		// Choose Movies To Rent
+		ArrayList<Movie> moviesToRent = new ArrayList<>();
+
+		Random rand = new Random();
+		for(int i=0; i<numMoviesToRent; i++) {
+			// For each of the movies that the customer will rent, they choose a random pick from inventory Movies.
+			int index = rand.nextInt(Movies.size());
+			
+			// Add the chosen Movie to the ArrayList moviesToRent.
+			moviesToRent.add(Movies.get(index));
+			
+			// Remove the chosen Movie from inventory Movies.
+			Movies.remove(index);
+		}
+			
 		// Create a new Rental
-		Rental rental = new Rental(customer, movies, daysToRent);
-		
+		Rental rental = new Rental(getCustomer(customerIndex), moviesToRent, getCustomer(customerIndex).getDaysToRent());
+
 		// Add the new Rental to Rentals
 		Rentals.add(rental);
 		
 		// Update the renting customer
 		for(Customer match : Customers) {
 			
-			if (match == customer) {
-				customer.newRental(movies.size());
+			if (match == Customers.get(customerIndex)) {
+				match.newRental(numMoviesToRent);
 			}
-		}
-		
-		// Remove the rented movies from the inventory list.
-		for(Movie movie : movies) {
-			Movies.remove(movie);
 		}
 	}
 	
