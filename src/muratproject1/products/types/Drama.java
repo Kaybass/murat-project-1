@@ -9,4 +9,9 @@ public class Drama extends Type {
 	public double getMultiplier(){
 		return 3.0;
 	}
+	
+	@Override
+	public String toString() {
+		return "Drama";
+	}
 }

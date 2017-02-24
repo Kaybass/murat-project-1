@@ -9,4 +9,9 @@ public class Romance extends Type {
 	public double getMultiplier(){
 		return 2.5;
 	}
+	
+	@Override
+	public String toString() {
+		return "Romance";
+	}
 }

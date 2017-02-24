@@ -24,4 +24,8 @@ public class Movie {
 	public void changeType(Type type){
 		movieType = type;
 	}
+	
+	public String getType() {
+		return movieType.toString();
+	}
 }

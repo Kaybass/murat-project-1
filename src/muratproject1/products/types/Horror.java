@@ -9,4 +9,9 @@ public class Horror extends Type {
 	public double getMultiplier(){
 		return 4.0;
 	}
+	
+	@Override
+	public String toString() {
+		return "Horror";
+	}
 }

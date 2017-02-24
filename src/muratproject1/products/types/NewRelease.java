@@ -9,4 +9,9 @@ public class NewRelease extends Type {
 	public double getMultiplier(){
 		return 7.0;
 	}
+	
+	@Override
+	public String toString() {
+		return "New Release";
+	}
 }
